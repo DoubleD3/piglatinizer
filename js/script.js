@@ -6,22 +6,41 @@
 
 // Document Ready Function. All of your jQuery should go in here. 
 $( document ).ready(function() {
-  
-
-
-
+  var translate = function(word) {
+$(".btn btn-primary").click (function(){
+	var word= $(".btn btn-primary").val()
+    var array = word.split('');
+    var vowels = ['a','e','i','o','u'];
+    var newWord = '';
+    for(var i = 0; i < word.length-1; i++) {
+        for(var y = 0; y < word.length-1; y++) {
+            if(word[y] === vowels[i]) {
+                for(var x = y; x < word.length; x++){
+                    newWord = newWord + word[x];
+                }
+                for(var n = 0; n < y; n++){ 
+                    newWord = newWord + word[n];
+                }
+                return newWord + "ay";
+                
+            }       
+        }
+    }
 });
 
+function sentenceToPigLatin(word){
+     var vowels = ['a','e','i','o','u'];
+     var firstLetter= word.charAt(0);
+	 if(vowels.includes(firstLetter)){
+	   for(var i = 0; i < word.length; i = i + 1){
+	   return word + "ay";
+}
+}
+}
 
-// Create the wordToPigLatin function that takes a word as a parameter and returns a transfromed word. 
-
-
-
-
-
-
-// Create the sentenceToPigLatin function that takes a sentence as a parameter
-	//Loops through all the words in the sentence and transforms each word
-	//It should return a transfromed sentance
-
-
+$("#input").click (function(){
+	var word= $(".btn btn-primary").val()
+	console.log(word);
+	var saved = sentenceToPigLatin(word);
+	$('body').append(saved);
+});
